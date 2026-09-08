@@ -45,3 +45,6 @@ npm run build
 ```
 
 既存のSites向けビルド設定も保持しています。
+
+### 成果物LPのURL
+https://seikalp.nanasinogonbei.com/
