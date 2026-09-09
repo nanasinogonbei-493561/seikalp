@@ -48,3 +48,7 @@ npm run build
 
 ### 成果物LPのURL
 https://seikalp.nanasinogonbei.com/
+
+## 依存関係のセキュリティ更新
+
+Miniflareが固定する `sharp@0.35.2` の脆弱性を避けるため、`package.json` の `overrides.miniflare.sharp` で修正版 `0.35.4` を指定しています。Miniflareの更新時に要求バージョンを確認し、修正版を含むようになったらこの指定を削除して `npm audit` と両ビルドを再確認してください。
