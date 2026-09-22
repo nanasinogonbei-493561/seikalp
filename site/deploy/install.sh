@@ -6,13 +6,16 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 source_dir=/home/admin/seikalp-deploy
 available=/etc/nginx/sites-available/seikalp
- enabled=/etc/nginx/sites-enabled/seikalp
+enabled=/etc/nginx/sites-enabled/seikalp
 if [ -e "$available" ] || [ -L "$enabled" ] || [ -e /var/www/seikalp ]; then
     echo 'Existing seikalp files detected. Stopping to avoid overwriting them.'
     exit 1
 fi
 test -s "$source_dir/public/index.html"
+test -s "$source_dir/seikalp-security.conf"
 nginx -t
+install -d -m 755 /etc/nginx/snippets
+install -m 644 "$source_dir/seikalp-security.conf" /etc/nginx/snippets/seikalp-security.conf
 install -d -m 755 /var/www/seikalp
 cp -R "$source_dir/public/." /var/www/seikalp/
 chown -R root:root /var/www/seikalp

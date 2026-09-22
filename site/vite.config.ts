@@ -3,6 +3,19 @@ import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json' with { type: 'json' };
+import packageConfig from './package.json' with { type: 'json' };
+
+// vinext exposes its own version through Next.js's compatibility global.
+// Identify the actual product so scanners don't treat beta.11 as Next.js 1.x.
+const frameworkIdentity = () => ({
+  name: 'seikalp-framework-identity',
+  enforce: 'post' as const,
+  config: () => ({
+    define: {
+      'process.env.__NEXT_VERSION': JSON.stringify(`vinext/${packageConfig.dependencies.vinext}`),
+    },
+  }),
+});
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -38,7 +51,7 @@ export default defineConfig(async () => {
   if (process.env.DEPLOY_TARGET === 'vps') {
     return {
       css: { postcss: { plugins: [tailwindcss()] } },
-      plugins: [vinext()],
+      plugins: [vinext(), frameworkIdentity()],
     };
   }
 
@@ -58,6 +71,7 @@ export default defineConfig(async () => {
       : undefined,
     plugins: [
       vinext(),
+      frameworkIdentity(),
       sites(),
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
