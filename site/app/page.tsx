@@ -4,6 +4,7 @@ const works = [
   { n: '03', category: 'APPLICATION', name: 'Todoapp3', className: 'application', word: 'Todoapp3', url: 'https://github.com/nanasinogonbei-493561/Todoapp3' },
   { n: '04', category: 'APPLICATION', name: 'TodoApp', className: 'web', word: 'TodoApp', url: 'https://github.com/nanasinogonbei-493561/TodoApp' },
   { n: '05', category: 'APPLICATION', name: 'react-todolist', className: 'document', word: 'React Todo', url: 'https://github.com/nanasinogonbei-493561/react-todolist' },
+  { n: '06', category: 'APPLICATION', name: 'CRM_register（Java版）', className: 'application', word: 'CRM Java', description: 'Javaで制作したCRMの認証機能です。現在はログインとユーザー登録のみ実装しています。', url: 'https://github.com/nanasinogonbei-493561/CRM_register' },
 ];
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
               <div className="work-content">
                 <div className="work-kicker"><span>{work.n} / {work.category}</span><span className="sample-tag">GITHUB</span></div>
                 <h3>{work.name}</h3>
-                <p className="description">ソースコードは、GitHubリポジトリでご覧いただけます。</p>
+                <p className="description">{work.description ?? 'ソースコードは、GitHubリポジトリでご覧いただけます。'}</p>
                 <a className="repository-link" href={work.url} target="_blank" rel="noopener noreferrer" aria-label={`${work.name} をGitHubで見る（新しいタブで開きます）`}>
                   <span>GitHubで見る <span aria-hidden="true">↗</span></span>
                   <span className="repository-url">{work.url}</span>
