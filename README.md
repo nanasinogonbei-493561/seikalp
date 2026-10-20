@@ -1,6 +1,6 @@
 # SEIKA — 成果物コレクション
 
-成果物を紹介する日本語のLPです。CRM-kadai、ECsite-Java、Todoapp3、TodoApp、react-todolistの5件の成果物とGitHubリンクを掲載しています。スマートフォン表示に対応しています。
+成果物を紹介する日本語のLPです。CRM-kadai、ECsite-Java、Todoapp3、TodoApp、react-todolist、CRM_register（Java版）の6件の成果物とGitHubリンクを掲載しています。CRM_registerはログイン・ユーザー登録のみ実装済みの成果物として紹介しています。スマートフォン表示に対応しています。
 
 アプリケーションは `site/` にあります。掲載内容は `site/app/page.tsx`、スタイルは `site/app/globals.css` で変更できます。
 
